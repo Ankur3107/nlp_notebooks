@@ -15,6 +15,8 @@
 
 * Huggingface Transformer with Fastai Tutorial [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ankur3107/colab_notebooks/blob/master/SUsing_Transformers_with_Fastai_Tutorial.ipynb)
 
+* Contextual Topic Modeling [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ankur3107/colab_notebooks/blob/master/contextual_topic_modeling.ipynb)
+
 
 ## Tensorflow
 
