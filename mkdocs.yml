@@ -1,0 +1,21 @@
+site_name: NLP-Notebooks
+nav:
+    - BERT_Fine_Tuning_Sentence_Classification_v2.md
+    - Bert_Classification_Pt.md
+    - Bert_Pre_Training.md
+    - Doc_Visual_QA_and_Bill_extraction_demo.md
+    - GPT_2_on_Onnx_CPU.md
+    - Generic_Transformer_Classification.md
+    - Question_Answering_with_a_Fine_Tuned_BERT.md
+    - Seq2Seq_Pytorch.md
+    - SetFit_SST_2_Few_shot.md
+    - Simpletransformers_2.md
+    - TAPAS_fine_tuning_in_tf.md
+    - Using_Transformers_with_Fastai_Tutorial.md
+    - Wikipedia_answer_retrieval_DPR.md
+    - contextual_topic_modeling.md
+    - knowledge_distillation_exploration.md
+    - large_scale_multilabelclassification.md
+    - simpletransformers_intro.md
+    - token_classification_transformers_zenml.md
+theme: readthedocs
