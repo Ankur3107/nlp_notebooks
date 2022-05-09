@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Seq2Seq Pytorch - NLP-Notebooks</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Seq2Seq Pytorch";
+        var mkdocs_page_input_path = "Seq2Seq_Pytorch.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NLP-Notebooks
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../BERT_Fine_Tuning_Sentence_Classification_v2/">BERT Fine Tuning Sentence Classification v2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bert_Classification_Pt/">Bert Classification Pt</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bert_Pre_Training/">Bert Pre Training</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Doc_Visual_QA_and_Bill_extraction_demo/">Doc Visual QA and Bill extraction demo</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../GPT_2_on_Onnx_CPU/">GPT 2 on Onnx CPU</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Generic_Transformer_Classification/">Generic Transformer Classification</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Question_Answering_with_a_Fine_Tuned_BERT/">Question Answering with a Fine Tuned BERT</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Seq2Seq Pytorch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SetFit_SST_2_Few_shot/">SetFit SST 2 Few shot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Simpletransformers_2/">Simpletransformers 2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TAPAS_fine_tuning_in_tf/">TAPAS fine tuning in tf</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Using_Transformers_with_Fastai_Tutorial/">Package Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Wikipedia_answer_retrieval_DPR/">Wikipedia answer retrieval DPR</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contextual_topic_modeling/">Contextual topic modeling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../knowledge_distillation_exploration/">Knowledge distillation exploration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../large_scale_multilabelclassification/">Large scale multilabelclassification</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simpletransformers_intro/">Simpletransformers intro</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../token_classification_transformers_zenml/">Token classification transformers zenml</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NLP-Notebooks</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Seq2Seq Pytorch</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://colab.research.google.com/github/Ankur3107/colab_notebooks/blob/master/Seq2Seq_Pytorch.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<pre><code>!pip install spacy --upgrade
+</code></pre>
+<pre><code>Collecting spacy
+[?25l  Downloading https://files.pythonhosted.org/packages/10/b5/c7a92c7ce5d4b353b70b4b5b4385687206c8b230ddfe08746ab0fd310a3a/spacy-2.3.2-cp36-cp36m-manylinux1_x86_64.whl (9.9MB)
+[K     |████████████████████████████████| 10.0MB 3.9MB/s 
+[?25hRequirement already satisfied, skipping upgrade: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.6/dist-packages (from spacy) (1.0.2)
+Requirement already satisfied, skipping upgrade: wasabi&lt;1.1.0,&gt;=0.4.0 in /usr/local/lib/python3.6/dist-packages (from spacy) (0.7.1)
+Requirement already satisfied, skipping upgrade: catalogue&lt;1.1.0,&gt;=0.0.7 in /usr/local/lib/python3.6/dist-packages (from spacy) (1.0.0)
+Requirement already satisfied, skipping upgrade: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy) (2.0.3)
+Requirement already satisfied, skipping upgrade: setuptools in /usr/local/lib/python3.6/dist-packages (from spacy) (49.6.0)
+Collecting thinc==7.4.1
+[?25l  Downloading https://files.pythonhosted.org/packages/10/ae/ef3ae5e93639c0ef8e3eb32e3c18341e511b3c515fcfc603f4b808087651/thinc-7.4.1-cp36-cp36m-manylinux1_x86_64.whl (2.1MB)
+[K     |████████████████████████████████| 2.1MB 18.3MB/s 
+[?25hRequirement already satisfied, skipping upgrade: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.6/dist-packages (from spacy) (2.23.0)
+Requirement already satisfied, skipping upgrade: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.6/dist-packages (from spacy) (4.41.1)
+Requirement already satisfied, skipping upgrade: plac&lt;1.2.0,&gt;=0.9.6 in /usr/local/lib/python3.6/dist-packages (from spacy) (1.1.3)
+Requirement already satisfied, skipping upgrade: blis&lt;0.5.0,&gt;=0.4.0 in /usr/local/lib/python3.6/dist-packages (from spacy) (0.4.1)
+Requirement already satisfied, skipping upgrade: srsly&lt;1.1.0,&gt;=1.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy) (1.0.2)
+Requirement already satisfied, skipping upgrade: numpy&gt;=1.15.0 in /usr/local/lib/python3.6/dist-packages (from spacy) (1.18.5)
+Requirement already satisfied, skipping upgrade: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy) (3.0.2)
+Requirement already satisfied, skipping upgrade: importlib-metadata&gt;=0.20; python_version &lt; "3.8" in /usr/local/lib/python3.6/dist-packages (from catalogue&lt;1.1.0,&gt;=0.0.7-&gt;spacy) (1.7.0)
+Requirement already satisfied, skipping upgrade: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (3.0.4)
+Requirement already satisfied, skipping upgrade: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2.10)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (1.24.3)
+Requirement already satisfied, skipping upgrade: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2020.6.20)
+Requirement already satisfied, skipping upgrade: zipp&gt;=0.5 in /usr/local/lib/python3.6/dist-packages (from importlib-metadata&gt;=0.20; python_version &lt; "3.8"-&gt;catalogue&lt;1.1.0,&gt;=0.0.7-&gt;spacy) (3.1.0)
+Installing collected packages: thinc, spacy
+  Found existing installation: thinc 7.4.0
+    Uninstalling thinc-7.4.0:
+      Successfully uninstalled thinc-7.4.0
+  Found existing installation: spacy 2.2.4
+    Uninstalling spacy-2.2.4:
+      Successfully uninstalled spacy-2.2.4
+Successfully installed spacy-2.3.2 thinc-7.4.1
+</code></pre>
+<pre><code>!python -m spacy download en
+!python -m spacy download de
+!python -m spacy download hi
+</code></pre>
+<pre><code>Collecting en_core_web_sm==2.3.1
+[?25l  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz (12.0MB)
+[K     |████████████████████████████████| 12.1MB 803kB/s 
+[?25hRequirement already satisfied: spacy&lt;2.4.0,&gt;=2.3.0 in /usr/local/lib/python3.6/dist-packages (from en_core_web_sm==2.3.1) (2.3.2)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.4.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (0.7.1)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (1.0.2)
+Requirement already satisfied: blis&lt;0.5.0,&gt;=0.4.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (0.4.1)
+Requirement already satisfied: thinc==7.4.1 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (7.4.1)
+Requirement already satisfied: srsly&lt;1.1.0,&gt;=1.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (1.0.2)
+Requirement already satisfied: catalogue&lt;1.1.0,&gt;=0.0.7 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (1.0.0)
+Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (1.18.5)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (3.0.2)
+Requirement already satisfied: plac&lt;1.2.0,&gt;=0.9.6 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (1.1.3)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (4.41.1)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (2.23.0)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (49.6.0)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (2.0.3)
+Requirement already satisfied: importlib-metadata&gt;=0.20; python_version &lt; "3.8" in /usr/local/lib/python3.6/dist-packages (from catalogue&lt;1.1.0,&gt;=0.0.7-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (1.7.0)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (1.24.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (2020.6.20)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (2.10)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.6/dist-packages (from importlib-metadata&gt;=0.20; python_version &lt; "3.8"-&gt;catalogue&lt;1.1.0,&gt;=0.0.7-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;en_core_web_sm==2.3.1) (3.1.0)
+Building wheels for collected packages: en-core-web-sm
+  Building wheel for en-core-web-sm (setup.py) ... [?25l[?25hdone
+  Created wheel for en-core-web-sm: filename=en_core_web_sm-2.3.1-cp36-none-any.whl size=12047109 sha256=c566e8eddcd63bc8259a784a72fae15d14da6e23d183b7a16bf6032b9aeaeed2
+  Stored in directory: /tmp/pip-ephem-wheel-cache-76hzqxdi/wheels/2b/3f/41/f0b92863355c3ba34bb32b37d8a0c662959da0058202094f46
+Successfully built en-core-web-sm
+Installing collected packages: en-core-web-sm
+  Found existing installation: en-core-web-sm 2.2.5
+    Uninstalling en-core-web-sm-2.2.5:
+      Successfully uninstalled en-core-web-sm-2.2.5
+Successfully installed en-core-web-sm-2.3.1
+[38;5;2m✔ Download and installation successful[0m
+You can now load the model via spacy.load('en_core_web_sm')
+[38;5;2m✔ Linking successful[0m
+/usr/local/lib/python3.6/dist-packages/en_core_web_sm --&gt;
+/usr/local/lib/python3.6/dist-packages/spacy/data/en
+You can now load the model via spacy.load('en')
+Collecting de_core_news_sm==2.3.0
+[?25l  Downloading https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.3.0/de_core_news_sm-2.3.0.tar.gz (14.9MB)
+[K     |████████████████████████████████| 14.9MB 833kB/s 
+[?25hRequirement already satisfied: spacy&lt;2.4.0,&gt;=2.3.0 in /usr/local/lib/python3.6/dist-packages (from de_core_news_sm==2.3.0) (2.3.2)
+Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (1.18.5)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (4.41.1)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (2.23.0)
+Requirement already satisfied: catalogue&lt;1.1.0,&gt;=0.0.7 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (1.0.0)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (1.0.2)
+Requirement already satisfied: plac&lt;1.2.0,&gt;=0.9.6 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (1.1.3)
+Requirement already satisfied: blis&lt;0.5.0,&gt;=0.4.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (0.4.1)
+Requirement already satisfied: srsly&lt;1.1.0,&gt;=1.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (1.0.2)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (49.6.0)
+Requirement already satisfied: thinc==7.4.1 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (7.4.1)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (3.0.2)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.4.0 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (0.7.1)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.6/dist-packages (from spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (2.0.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (2020.6.20)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (3.0.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (2.10)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.6/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (1.24.3)
+Requirement already satisfied: importlib-metadata&gt;=0.20; python_version &lt; "3.8" in /usr/local/lib/python3.6/dist-packages (from catalogue&lt;1.1.0,&gt;=0.0.7-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (1.7.0)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.6/dist-packages (from importlib-metadata&gt;=0.20; python_version &lt; "3.8"-&gt;catalogue&lt;1.1.0,&gt;=0.0.7-&gt;spacy&lt;2.4.0,&gt;=2.3.0-&gt;de_core_news_sm==2.3.0) (3.1.0)
+Building wheels for collected packages: de-core-news-sm
+  Building wheel for de-core-news-sm (setup.py) ... [?25l[?25hdone
+  Created wheel for de-core-news-sm: filename=de_core_news_sm-2.3.0-cp36-none-any.whl size=14907580 sha256=959d3b6df2936d8e86bbc601dbd80eddfb310d3af7aca8895529c319cb58b539
+  Stored in directory: /tmp/pip-ephem-wheel-cache-59e5ledg/wheels/db/f3/1e/0df0f27eee12bd1aaa94bcfef11b01eca62f90b9b9a0ce08fd
+Successfully built de-core-news-sm
+Installing collected packages: de-core-news-sm
+  Found existing installation: de-core-news-sm 2.2.5
+    Uninstalling de-core-news-sm-2.2.5:
+      Successfully uninstalled de-core-news-sm-2.2.5
+Successfully installed de-core-news-sm-2.3.0
+[38;5;2m✔ Download and installation successful[0m
+You can now load the model via spacy.load('de_core_news_sm')
+[38;5;2m✔ Linking successful[0m
+/usr/local/lib/python3.6/dist-packages/de_core_news_sm --&gt;
+/usr/local/lib/python3.6/dist-packages/spacy/data/de
+You can now load the model via spacy.load('de')
+
+[38;5;1m✘ No compatible model found for 'hi' (spaCy v2.3.2).[0m
+</code></pre>
+<pre><code>import torch
+import torch.nn as nn
+import torch.optim as optim
+import spacy
+from torch.utils.tensorboard import SummaryWriter
+from torchtext.datasets import Multi30k
+from torchtext.data import Field, BucketIterator
+from spacy.lang.hi import Hindi
+</code></pre>
+<pre><code>spacy_ger = spacy.load(&quot;de&quot;)
+spacy_eng = spacy.load(&quot;en&quot;)
+
+spacy_hi = Hindi()
+def tokenize_hi(text):
+    return [tok.text for tok in spacy_hi.tokenizer(text)]
+
+def tokenize_ger(text):
+    return [tok.text for tok in spacy_ger.tokenizer(text)]
+
+
+def tokenize_eng(text):
+    return [tok.text for tok in spacy_eng.tokenizer(text)]
+
+
+german = Field(tokenize=tokenize_ger, lower=True, init_token=&quot;&lt;sos&gt;&quot;, eos_token=&quot;&lt;eos&gt;&quot;)
+
+english = Field(
+    tokenize=tokenize_eng, lower=True, init_token=&quot;&lt;sos&gt;&quot;, eos_token=&quot;&lt;eos&gt;&quot;
+)
+
+train_data, valid_data, test_data = Multi30k.splits(
+    exts=(&quot;.de&quot;, &quot;.en&quot;), fields=(german, english)
+)
+
+german.build_vocab(train_data, max_size=10000, min_freq=2)
+english.build_vocab(train_data, max_size=10000, min_freq=2)
+</code></pre>
+<pre><code>class Transformer(nn.Module):
+    def __init__(
+        self,
+        embedding_size,
+        src_vocab_size,
+        trg_vocab_size,
+        src_pad_idx,
+        num_heads,
+        num_encoder_layers,
+        num_decoder_layers,
+        forward_expansion,
+        dropout,
+        max_len,
+        device,
+    ):
+        super(Transformer, self).__init__()
+        self.src_word_embedding = nn.Embedding(src_vocab_size, embedding_size)
+        self.src_position_embedding = nn.Embedding(max_len, embedding_size)
+        self.trg_word_embedding = nn.Embedding(trg_vocab_size, embedding_size)
+        self.trg_position_embedding = nn.Embedding(max_len, embedding_size)
+
+        self.device = device
+        self.transformer = nn.Transformer(
+            embedding_size,
+            num_heads,
+            num_encoder_layers,
+            num_decoder_layers,
+            forward_expansion,
+            dropout,
+        )
+        self.fc_out = nn.Linear(embedding_size, trg_vocab_size)
+        self.dropout = nn.Dropout(dropout)
+        self.src_pad_idx = src_pad_idx
+
+    def make_src_mask(self, src):
+        src_mask = src.transpose(0, 1) == self.src_pad_idx
+
+        # (N, src_len)
+        return src_mask.to(self.device)
+
+    def forward(self, src, trg):
+        src_seq_length, N = src.shape
+        trg_seq_length, N = trg.shape
+
+        src_positions = (
+            torch.arange(0, src_seq_length)
+            .unsqueeze(1)
+            .expand(src_seq_length, N)
+            .to(self.device)
+        )
+
+        trg_positions = (
+            torch.arange(0, trg_seq_length)
+            .unsqueeze(1)
+            .expand(trg_seq_length, N)
+            .to(self.device)
+        )
+
+        embed_src = self.dropout(
+            (self.src_word_embedding(src) + self.src_position_embedding(src_positions))
+        )
+        embed_trg = self.dropout(
+            (self.trg_word_embedding(trg) + self.trg_position_embedding(trg_positions))
+        )
+
+        src_padding_mask = self.make_src_mask(src)
+        trg_mask = self.transformer.generate_square_subsequent_mask(trg_seq_length).to(
+            self.device
+        )
+
+        out = self.transformer(
+            embed_src,
+            embed_trg,
+            src_key_padding_mask=src_padding_mask,
+            tgt_mask=trg_mask,
+        )
+        out = self.fc_out(out)
+        return out
+
+</code></pre>
+<pre><code># We're ready to define everything we need for training our Seq2Seq model
+device = torch.device(&quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+
+load_model = False
+save_model = True
+
+# Training hyperparameters
+num_epochs = 10000
+learning_rate = 3e-4
+batch_size = 32
+
+# Model hyperparameters
+src_vocab_size = len(german.vocab)
+trg_vocab_size = len(english.vocab)
+embedding_size = 512
+num_heads = 8
+num_encoder_layers = 3
+num_decoder_layers = 3
+dropout = 0.10
+max_len = 100
+forward_expansion = 4
+src_pad_idx = english.vocab.stoi[&quot;&lt;pad&gt;&quot;]
+
+# Tensorboard to get nice loss plot
+writer = SummaryWriter(&quot;runs/loss_plot&quot;)
+step = 0
+</code></pre>
+<pre><code>train_iterator, valid_iterator, test_iterator = BucketIterator.splits(
+    (train_data, valid_data, test_data),
+    batch_size=batch_size,
+    sort_within_batch=True,
+    sort_key=lambda x: len(x.src),
+    device=device,
+)
+
+</code></pre>
+<pre><code>model = Transformer(
+    embedding_size,
+    src_vocab_size,
+    trg_vocab_size,
+    src_pad_idx,
+    num_heads,
+    num_encoder_layers,
+    num_decoder_layers,
+    forward_expansion,
+    dropout,
+    max_len,
+    device,
+).to(device)
+</code></pre>
+<pre><code>def translate_sentence(model, sentence, german, english, device, max_length=50):
+    # Load german tokenizer
+    spacy_ger = spacy.load(&quot;de&quot;)
+
+    # Create tokens using spacy and everything in lower case (which is what our vocab is)
+    if type(sentence) == str:
+        tokens = [token.text.lower() for token in spacy_ger(sentence)]
+    else:
+        tokens = [token.lower() for token in sentence]
+
+    # Add &lt;SOS&gt; and &lt;EOS&gt; in beginning and end respectively
+    tokens.insert(0, german.init_token)
+    tokens.append(german.eos_token)
+
+    # Go through each german token and convert to an index
+    text_to_indices = [german.vocab.stoi[token] for token in tokens]
+
+    # Convert to Tensor
+    sentence_tensor = torch.LongTensor(text_to_indices).unsqueeze(1).to(device)
+
+    outputs = [english.vocab.stoi[&quot;&lt;sos&gt;&quot;]]
+    for i in range(max_length):
+        trg_tensor = torch.LongTensor(outputs).unsqueeze(1).to(device)
+
+        with torch.no_grad():
+            output = model(sentence_tensor, trg_tensor)
+
+        best_guess = output.argmax(2)[-1, :].item()
+        outputs.append(best_guess)
+
+        if best_guess == english.vocab.stoi[&quot;&lt;eos&gt;&quot;]:
+            break
+
+    translated_sentence = [english.vocab.itos[idx] for idx in outputs]
+    # remove start token
+    return translated_sentence[1:]
+
+
+def bleu(data, model, german, english, device):
+    targets = []
+    outputs = []
+
+    for example in data:
+        src = vars(example)[&quot;src&quot;]
+        trg = vars(example)[&quot;trg&quot;]
+
+        prediction = translate_sentence(model, src, german, english, device)
+        prediction = prediction[:-1]  # remove &lt;eos&gt; token
+
+        targets.append([trg])
+        outputs.append(prediction)
+
+    return bleu_score(outputs, targets)
+
+
+def save_checkpoint(state, filename=&quot;my_checkpoint.pth.tar&quot;):
+    print(&quot;=&gt; Saving checkpoint&quot;)
+    torch.save(state, filename)
+
+
+def load_checkpoint(checkpoint, model, optimizer):
+    print(&quot;=&gt; Loading checkpoint&quot;)
+    model.load_state_dict(checkpoint[&quot;state_dict&quot;])
+    optimizer.load_state_dict(checkpoint[&quot;optimizer&quot;])
+
+
+optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+    optimizer, factor=0.1, patience=10, verbose=True
+)
+
+pad_idx = english.vocab.stoi[&quot;&lt;pad&gt;&quot;]
+criterion = nn.CrossEntropyLoss(ignore_index=pad_idx)
+
+if load_model:
+    load_checkpoint(torch.load(&quot;my_checkpoint.pth.tar&quot;), model, optimizer)
+
+sentence = &quot;ein pferd geht unter einer brücke neben einem boot.&quot;
+</code></pre>
+<pre><code>for epoch in range(num_epochs):
+    print(f&quot;[Epoch {epoch} / {num_epochs}]&quot;)
+
+    if save_model:
+        checkpoint = {
+            &quot;state_dict&quot;: model.state_dict(),
+            &quot;optimizer&quot;: optimizer.state_dict(),
+        }
+        save_checkpoint(checkpoint)
+
+    model.eval()
+    translated_sentence = translate_sentence(
+        model, sentence, german, english, device, max_length=50
+    )
+
+    print(f&quot;Translated example sentence: \n {translated_sentence}&quot;)
+    model.train()
+    losses = []
+
+    for batch_idx, batch in enumerate(train_iterator):
+        # Get input and targets and get to cuda
+        inp_data = batch.src.to(device)
+        target = batch.trg.to(device)
+
+        # Forward prop
+        output = model(inp_data, target[:-1, :])
+
+        # Output is of shape (trg_len, batch_size, output_dim) but Cross Entropy Loss
+        # doesn't take input in that form. For example if we have MNIST we want to have
+        # output to be: (N, 10) and targets just (N). Here we can view it in a similar
+        # way that we have output_words * batch_size that we want to send in into
+        # our cost function, so we need to do some reshapin.
+        # Let's also remove the start token while we're at it
+        output = output.reshape(-1, output.shape[2])
+        target = target[1:].reshape(-1)
+
+        optimizer.zero_grad()
+
+        loss = criterion(output, target)
+        losses.append(loss.item())
+
+        # Back prop
+        loss.backward()
+        # Clip to avoid exploding gradient issues, makes sure grads are
+        # within a healthy range
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1)
+
+        # Gradient descent step
+        optimizer.step()
+
+        # plot to tensorboard
+        writer.add_scalar(&quot;Training loss&quot;, loss, global_step=step)
+        step += 1
+
+    mean_loss = sum(losses) / len(losses)
+    scheduler.step(mean_loss)
+
+# running on entire test data takes a while
+score = bleu(test_data[1:100], model, german, english, device)
+print(f&quot;Bleu score {score * 100:.2f}&quot;)
+</code></pre>
+<pre><code>[Epoch 0 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['.', 'secures', 'secures', 'half', 'secures', 'secures', 'half', '.', 'secures', 'toddler', 'secures', 'secures', 'half', '.', '.', 'olympians', 'half', '.', 'olympians', 'helmet', '.', 'secures', 'toddler', 'secures', 'secures', 'toddler', 'secures', 'secures', '.', 'secures', 'secures', '.', 'secures', '.', 'secures', 'secures', 'secures', 'secures', 'half', 'half', '.', 'secures', 'toddler', 'secures', 'secures', 'secures', 'mosaic', 'secures', 'secures', 'toddler']
+[Epoch 1 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['a', 'horse', 'walking', 'under', 'a', 'boat', 'next', 'to', 'a', 'boat', '.', '&lt;eos&gt;']
+[Epoch 2 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['a', 'horse', 'is', 'walking', 'under', 'a', 'bridge', 'next', 'to', 'a', 'boat', '.', '&lt;eos&gt;']
+[Epoch 3 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['a', 'horse', 'is', 'walking', 'under', 'a', 'bridge', 'next', 'to', 'a', 'boat', '.', '&lt;eos&gt;']
+[Epoch 4 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['a', 'horse', 'walks', 'under', 'a', 'bridge', 'next', 'to', 'a', 'boat', '.', '&lt;eos&gt;']
+[Epoch 5 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['a', 'horse', 'walks', 'under', 'a', 'bridge', 'next', 'to', 'a', 'boat', '.', '&lt;eos&gt;']
+[Epoch 6 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['a', 'horse', 'walks', 'underneath', 'a', 'bridge', 'next', 'to', 'a', 'boat', '.', '&lt;eos&gt;']
+[Epoch 7 / 10000]
+=&gt; Saving checkpoint
+Translated example sentence: 
+ ['a', 'horse', 'is', 'walking', 'under', 'a', 'bridge', 'beside', 'a', 'boat', '.', '&lt;eos&gt;']
+</code></pre>
+<pre><code>
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Question_Answering_with_a_Fine_Tuned_BERT/" class="btn btn-neutral float-left" title="Question Answering with a Fine Tuned BERT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../SetFit_SST_2_Few_shot/" class="btn btn-neutral float-right" title="SetFit SST 2 Few shot">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Question_Answering_with_a_Fine_Tuned_BERT/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../SetFit_SST_2_Few_shot/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

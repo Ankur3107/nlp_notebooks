@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Knowledge distillation exploration - NLP-Notebooks</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Knowledge distillation exploration";
+        var mkdocs_page_input_path = "knowledge_distillation_exploration.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NLP-Notebooks
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../BERT_Fine_Tuning_Sentence_Classification_v2/">BERT Fine Tuning Sentence Classification v2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bert_Classification_Pt/">Bert Classification Pt</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bert_Pre_Training/">Bert Pre Training</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Doc_Visual_QA_and_Bill_extraction_demo/">Doc Visual QA and Bill extraction demo</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../GPT_2_on_Onnx_CPU/">GPT 2 on Onnx CPU</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Generic_Transformer_Classification/">Generic Transformer Classification</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Question_Answering_with_a_Fine_Tuned_BERT/">Question Answering with a Fine Tuned BERT</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Seq2Seq_Pytorch/">Seq2Seq Pytorch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SetFit_SST_2_Few_shot/">SetFit SST 2 Few shot</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Simpletransformers_2/">Simpletransformers 2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TAPAS_fine_tuning_in_tf/">TAPAS fine tuning in tf</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Using_Transformers_with_Fastai_Tutorial/">Package Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Wikipedia_answer_retrieval_DPR/">Wikipedia answer retrieval DPR</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contextual_topic_modeling/">Contextual topic modeling</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Knowledge distillation exploration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../large_scale_multilabelclassification/">Large scale multilabelclassification</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simpletransformers_intro/">Simpletransformers intro</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../token_classification_transformers_zenml/">Token classification transformers zenml</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NLP-Notebooks</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Knowledge distillation exploration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://colab.research.google.com/github/Ankur3107/colab_notebooks/blob/master/knowledge_distillation_exploration.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<pre><code>import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+</code></pre>
+<pre><code>vocab_size = 20000  # Only consider the top 20k words
+maxlen = 200  # Only consider the first 200 words of each movie review
+(x_train, y_train), (x_val, y_val) = keras.datasets.imdb.load_data(num_words=vocab_size)
+print(len(x_train), &quot;Training sequences&quot;)
+print(len(x_val), &quot;Validation sequences&quot;)
+x_train = keras.preprocessing.sequence.pad_sequences(x_train, maxlen=maxlen)
+x_val = keras.preprocessing.sequence.pad_sequences(x_val, maxlen=maxlen)
+</code></pre>
+<pre><code>25000 Training sequences
+25000 Validation sequences
+</code></pre>
+<pre><code>class Distiller(keras.Model):
+    def __init__(self, student, teacher):
+        super(Distiller, self).__init__()
+        self.teacher = student
+        self.student = teacher
+
+    def compile(
+        self,
+        optimizer,
+        metrics,
+        student_loss_fn,
+        distillation_loss_fn,
+        alpha=0.1,
+        temperature=3,
+    ):
+        &quot;&quot;&quot; Configure the distiller.
+
+        Args:
+            optimizer: Keras optimizer for the student weights
+            metrics: Keras metrics for evaluation
+            student_loss_fn: Loss function of difference between student
+                predictions and ground-truth
+            distillation_loss_fn: Loss function of difference between soft
+                student predictions and soft teacher predictions
+            alpha: weight to student_loss_fn and 1-alpha to distillation_loss_fn
+            temperature: Temperature for softening probability distributions.
+                Larger temperature gives softer distributions.
+        &quot;&quot;&quot;
+        super(Distiller, self).compile(optimizer=optimizer, metrics=metrics)
+        self.student_loss_fn = student_loss_fn
+        self.distillation_loss_fn = distillation_loss_fn
+        self.alpha = alpha
+        self.temperature = temperature
+
+    def train_step(self, data):
+        # Unpack data
+        x, y = data
+
+        # Forward pass of teacher
+        teacher_predictions = self.teacher(x, training=False)
+
+        with tf.GradientTape() as tape:
+            # Forward pass of student
+            student_predictions = self.student(x, training=True)
+
+            # Compute losses
+            student_loss = self.student_loss_fn(y, student_predictions)
+            distillation_loss = self.distillation_loss_fn(
+                tf.nn.softmax(teacher_predictions / self.temperature, axis=1),
+                tf.nn.softmax(student_predictions / self.temperature, axis=1),
+            )
+            loss = self.alpha * student_loss + (1 - self.alpha) * distillation_loss
+
+        # Compute gradients
+        trainable_vars = self.student.trainable_variables
+        gradients = tape.gradient(loss, trainable_vars)
+
+        # Update weights
+        self.optimizer.apply_gradients(zip(gradients, trainable_vars))
+
+        # Update the metrics configured in `compile()`.
+        self.compiled_metrics.update_state(y, student_predictions)
+
+        # Return a dict of performance
+        results = {m.name: m.result() for m in self.metrics}
+        results.update(
+            {&quot;student_loss&quot;: student_loss, &quot;distillation_loss&quot;: distillation_loss}
+        )
+        return results
+
+    def test_step(self, data):
+        # Unpack the data
+        x, y = data
+
+        # Compute predictions
+        y_prediction = self.student(x, training=False)
+
+        # Calculate the loss
+        student_loss = self.student_loss_fn(y, y_prediction)
+
+        # Update the metrics.
+        self.compiled_metrics.update_state(y, y_prediction)
+
+        # Return a dict of performance
+        results = {m.name: m.result() for m in self.metrics}
+        results.update({&quot;student_loss&quot;: student_loss})
+        return results
+</code></pre>
+<pre><code># Create the teacher
+# Input for variable-length sequences of integers
+inputs = keras.Input(shape=(maxlen,), dtype=&quot;int32&quot;)
+# Embed each integer in a 128-dimensional vector
+x = layers.Embedding(vocab_size, 128)(inputs)
+# Add 2 bidirectional LSTMs and GRUs
+x = layers.Bidirectional(layers.LSTM(64, return_sequences=True))(x)
+x = layers.Bidirectional(layers.GRU(128))(x)
+# Add a classifier
+outputs = layers.Dense(2)(x)
+teacher = keras.Model(inputs, outputs, name='teacher')
+teacher.summary()
+
+
+# Create the student
+# Input for variable-length sequences of integers
+inputs = keras.Input(shape=(maxlen,), dtype=&quot;int32&quot;)
+# Embed each integer in a 128-dimensional vector
+x = layers.Embedding(vocab_size, 64)(inputs)
+# Add 2 bidirectional LSTMs and GRUs
+x = layers.Bidirectional(layers.LSTM(32, return_sequences=True))(x)
+x = layers.Bidirectional(layers.GRU(32))(x)
+# Add a classifier
+outputs = layers.Dense(2)(x)
+student = keras.Model(inputs, outputs, name='student')
+student.summary()
+
+# Clone student for later comparison
+student_scratch = keras.models.clone_model(student)
+</code></pre>
+<pre><code>Model: "teacher"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         [(None, 200)]             0         
+_________________________________________________________________
+embedding (Embedding)        (None, 200, 128)          2560000   
+_________________________________________________________________
+bidirectional (Bidirectional (None, 200, 128)          98816     
+_________________________________________________________________
+bidirectional_1 (Bidirection (None, 256)               198144    
+_________________________________________________________________
+dense (Dense)                (None, 2)                 514       
+=================================================================
+Total params: 2,857,474
+Trainable params: 2,857,474
+Non-trainable params: 0
+_________________________________________________________________
+Model: "student"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_2 (InputLayer)         [(None, 200)]             0         
+_________________________________________________________________
+embedding_1 (Embedding)      (None, 200, 64)           1280000   
+_________________________________________________________________
+bidirectional_2 (Bidirection (None, 200, 64)           24832     
+_________________________________________________________________
+bidirectional_3 (Bidirection (None, 64)                18816     
+_________________________________________________________________
+dense_1 (Dense)              (None, 2)                 130       
+=================================================================
+Total params: 1,323,778
+Trainable params: 1,323,778
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+<pre><code># Train teacher as usual
+teacher.compile(
+    optimizer=keras.optimizers.Adam(),
+    loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=[keras.metrics.SparseCategoricalAccuracy()],
+)
+
+# Train and evaluate teacher on data.
+teacher.fit(x_train, y_train, epochs=3)
+teacher.evaluate(x_val, y_val)
+</code></pre>
+<pre><code>Epoch 1/3
+782/782 [==============================] - 43s 55ms/step - loss: 0.3714 - sparse_categorical_accuracy: 0.8351
+Epoch 2/3
+782/782 [==============================] - 43s 55ms/step - loss: 0.2004 - sparse_categorical_accuracy: 0.9232
+Epoch 3/3
+782/782 [==============================] - 42s 54ms/step - loss: 0.1297 - sparse_categorical_accuracy: 0.9519
+782/782 [==============================] - 12s 15ms/step - loss: 0.4922 - sparse_categorical_accuracy: 0.8590
+
+
+
+
+
+[0.49218621850013733, 0.8590400218963623]
+</code></pre>
+<pre><code># Initialize and compile distiller
+distiller = Distiller(student=student, teacher=teacher)
+distiller.compile(
+    optimizer=keras.optimizers.Adam(),
+    metrics=[keras.metrics.SparseCategoricalAccuracy()],
+    student_loss_fn=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    distillation_loss_fn=keras.losses.KLDivergence(),
+    alpha=0.1,
+    temperature=10,
+)
+
+# Distill teacher to student
+distiller.fit(x_train, y_train, epochs=3)
+
+# Evaluate student on test dataset
+distiller.evaluate(x_val, y_val)
+</code></pre>
+<pre><code>Epoch 1/3
+782/782 [==============================] - 53s 68ms/step - sparse_categorical_accuracy: 0.9664 - student_loss: 0.1382 - distillation_loss: 0.0084
+Epoch 2/3
+782/782 [==============================] - 54s 69ms/step - sparse_categorical_accuracy: 0.9781 - student_loss: 0.1119 - distillation_loss: 0.0085
+Epoch 3/3
+782/782 [==============================] - 54s 69ms/step - sparse_categorical_accuracy: 0.9868 - student_loss: 0.0937 - distillation_loss: 0.0088
+782/782 [==============================] - 12s 15ms/step - sparse_categorical_accuracy: 0.8476 - student_loss: 0.3908
+
+
+
+
+
+0.8475599884986877
+</code></pre>
+<pre><code># Train student as doen usually
+student_scratch.compile(
+    optimizer=keras.optimizers.Adam(),
+    loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics=[keras.metrics.SparseCategoricalAccuracy()],
+)
+
+# Train and evaluate student trained from scratch.
+student_scratch.fit(x_train, y_train, epochs=3)
+
+</code></pre>
+<pre><code>Epoch 1/3
+782/782 [==============================] - 31s 39ms/step - loss: 0.3796 - sparse_categorical_accuracy: 0.8246
+Epoch 2/3
+782/782 [==============================] - 30s 39ms/step - loss: 0.1918 - sparse_categorical_accuracy: 0.9283
+Epoch 3/3
+782/782 [==============================] - 30s 39ms/step - loss: 0.1123 - sparse_categorical_accuracy: 0.9602
+
+
+
+---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-7-2e22fcfd29d9&gt; in &lt;module&gt;()
+      8 # Train and evaluate student trained from scratch.
+      9 student_scratch.fit(x_train, y_train, epochs=3)
+---&gt; 10 student_scratch.evaluate(x_test, y_test)
+
+
+NameError: name 'x_test' is not defined
+</code></pre>
+<pre><code>student_scratch.evaluate(x_val, y_val)
+</code></pre>
+<pre><code>782/782 [==============================] - 12s 15ms/step - loss: 0.3720 - sparse_categorical_accuracy: 0.8596
+
+
+
+
+
+[0.37198370695114136, 0.8595600128173828]
+</code></pre>
+<pre><code>
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../contextual_topic_modeling/" class="btn btn-neutral float-left" title="Contextual topic modeling"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../large_scale_multilabelclassification/" class="btn btn-neutral float-right" title="Large scale multilabelclassification">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../contextual_topic_modeling/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../large_scale_multilabelclassification/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

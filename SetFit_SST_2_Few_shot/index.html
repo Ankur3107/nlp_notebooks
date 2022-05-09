@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>SetFit SST 2 Few shot - NLP-Notebooks</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SetFit SST 2 Few shot";
+        var mkdocs_page_input_path = "SetFit_SST_2_Few_shot.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> NLP-Notebooks
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../BERT_Fine_Tuning_Sentence_Classification_v2/">BERT Fine Tuning Sentence Classification v2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bert_Classification_Pt/">Bert Classification Pt</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Bert_Pre_Training/">Bert Pre Training</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Doc_Visual_QA_and_Bill_extraction_demo/">Doc Visual QA and Bill extraction demo</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../GPT_2_on_Onnx_CPU/">GPT 2 on Onnx CPU</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Generic_Transformer_Classification/">Generic Transformer Classification</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Question_Answering_with_a_Fine_Tuned_BERT/">Question Answering with a Fine Tuned BERT</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Seq2Seq_Pytorch/">Seq2Seq Pytorch</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">SetFit SST 2 Few shot</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Simpletransformers_2/">Simpletransformers 2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TAPAS_fine_tuning_in_tf/">TAPAS fine tuning in tf</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Using_Transformers_with_Fastai_Tutorial/">Package Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Wikipedia_answer_retrieval_DPR/">Wikipedia answer retrieval DPR</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contextual_topic_modeling/">Contextual topic modeling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../knowledge_distillation_exploration/">Knowledge distillation exploration</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../large_scale_multilabelclassification/">Large scale multilabelclassification</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simpletransformers_intro/">Simpletransformers intro</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../token_classification_transformers_zenml/">Token classification transformers zenml</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">NLP-Notebooks</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>SetFit SST 2 Few shot</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a href="https://colab.research.google.com/github/Ankur3107/nlp_notebooks/blob/master/Few-shot/SetFit_SST_2_Few_shot.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<p>Reference Links:</p>
+<ol>
+<li>
+<p>https://towardsdatascience.com/sentence-transformer-fine-tuning-setfit-outperforms-gpt-3-on-few-shot-text-classification-while-d9a3788f0b4e</p>
+</li>
+<li>
+<p>https://arxiv.org/pdf/2109.14076.pdf</p>
+</li>
+<li>
+<p>https://huggingface.co/spaces/ought/raft-leaderboard</p>
+</li>
+<li>
+<p>https://github.com/timoschick/pet</p>
+</li>
+</ol>
+<h1 id="init">Init</h1>
+<pre><code class="language-python">!pip install sentence_transformers -q
+</code></pre>
+<pre><code>[K     |████████████████████████████████| 78 kB 3.4 MB/s 
+[K     |████████████████████████████████| 3.4 MB 11.4 MB/s 
+[K     |████████████████████████████████| 3.3 MB 36.4 MB/s 
+[K     |████████████████████████████████| 1.2 MB 29.8 MB/s 
+[K     |████████████████████████████████| 61 kB 370 kB/s 
+[K     |████████████████████████████████| 596 kB 25.4 MB/s 
+[K     |████████████████████████████████| 895 kB 32.0 MB/s 
+[?25h  Building wheel for sentence-transformers (setup.py) ... [?25l[?25hdone
+</code></pre>
+<pre><code class="language-python">from sklearn.metrics import accuracy_score, f1_score
+from sklearn.linear_model import LogisticRegression
+from sentence_transformers import SentenceTransformer, InputExample, losses, models, datasets, evaluation
+from torch.utils.data import DataLoader
+
+from sklearn.manifold import TSNE
+from matplotlib import pyplot as plt
+
+# import warnings filter
+from warnings import simplefilter
+# ignore all future warnings
+simplefilter(action='ignore', category=FutureWarning)
+
+import pandas as pd
+import numpy as np
+
+import torch
+import random
+import torch
+
+def set_seed(seed):
+  random.seed(seed)
+  np.random.seed(seed)
+  torch.manual_seed(seed)
+</code></pre>
+<pre><code class="language-python">def sentence_pairs_generation(sentences, labels, pairs):
+    # initialize two empty lists to hold the (sentence, sentence) pairs and
+    # labels to indicate if a pair is positive or negative
+
+  numClassesList = np.unique(labels)
+  idx = [np.where(labels == i)[0] for i in numClassesList]
+
+  for idxA in range(len(sentences)):      
+    currentSentence = sentences[idxA]
+    label = labels[idxA]
+    idxB = np.random.choice(idx[np.where(numClassesList==label)[0][0]])
+    posSentence = sentences[idxB]
+          # prepare a positive pair and update the sentences and labels
+          # lists, respectively
+    pairs.append(InputExample(texts=[currentSentence, posSentence], label=1.0))
+
+    negIdx = np.where(labels != label)[0]
+    negSentence = sentences[np.random.choice(negIdx)]
+          # prepare a negative pair of images and update our lists
+    pairs.append(InputExample(texts=[currentSentence, negSentence], label=0.0))
+
+    # return a 2-tuple of our image pairs and labels
+  return (pairs)
+</code></pre>
+<pre><code class="language-python">#SST-2
+# Load SST-2 dataset into a pandas dataframe.
+
+train_df = pd.read_csv('https://github.com/clairett/pytorch-sentiment-classification/raw/master/data/SST2/train.tsv', delimiter='\t', header=None)
+
+# Load the test dataset into a pandas dataframe.
+eval_df = pd.read_csv('https://github.com/clairett/pytorch-sentiment-classification/raw/master/data/SST2/test.tsv', delimiter='\t', header=None)
+
+text_col=train_df.columns.values[0] 
+category_col=train_df.columns.values[1]
+
+x_eval = eval_df[text_col].values.tolist()
+y_eval = eval_df[category_col].values.tolist()
+</code></pre>
+<pre><code class="language-python">train_df.head()
+</code></pre>
+<div id="df-ad145a91-fe65-4f27-90e9-8193b3dfe59a">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a stirring , funny and finally transporting re...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>apparently reassembled from the cutting room f...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>they presume their audience wo n't sit still f...</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>this is a visually stunning rumination on love...</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>jonathan parker 's bartleby should have been t...</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-ad145a91-fe65-4f27-90e9-8193b3dfe59a')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-ad145a91-fe65-4f27-90e9-8193b3dfe59a button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-ad145a91-fe65-4f27-90e9-8193b3dfe59a');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+<h1 id="setfit">SetFit</h1>
+<pre><code class="language-python">#@title SetFit
+st_model = 'paraphrase-mpnet-base-v2' #@param ['paraphrase-mpnet-base-v2', 'all-mpnet-base-v1', 'all-mpnet-base-v2', 'stsb-mpnet-base-v2', 'all-MiniLM-L12-v2', 'paraphrase-albert-small-v2', 'all-roberta-large-v1']
+num_training = 32 #@param [&quot;8&quot;, &quot;16&quot;, &quot;32&quot;, &quot;54&quot;, &quot;128&quot;, &quot;256&quot;, &quot;512&quot;] {type:&quot;raw&quot;}
+num_itr = 5 #@param [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;10&quot;] {type:&quot;raw&quot;}
+plot2d_checkbox = True #@param {type: 'boolean'}
+
+</code></pre>
+<pre><code class="language-python">set_seed(0)
+# Equal samples per class training
+train_df_sample = pd.concat([train_df[train_df[1]==0].sample(num_training), train_df[train_df[1]==1].sample(num_training)])
+x_train = train_df_sample[text_col].values.tolist()
+y_train = train_df_sample[category_col].values.tolist()
+
+</code></pre>
+<pre><code class="language-python">train_df_sample.shape
+</code></pre>
+<pre><code>(64, 2)
+</code></pre>
+<pre><code class="language-python">x_train[0:5], y_train[0:5]
+</code></pre>
+<pre><code>(['makes a joke out of car chases for an hour and then gives us half an hour of car chases',
+  "so mind numbingly awful that you hope britney wo n't do it one more time , as far as movies are concerned",
+  "maid in manhattan proves that it 's easier to change the sheets than to change hackneyed concepts when it comes to dreaming up romantic comedies",
+  'if you go , pack your knitting needles',
+  'time of favor could have given audiences the time of day by concentrating on the elements of a revealing alienation among a culture of people who sadly are at hostile odds with one another through recklessness and retaliation'],
+ [0, 0, 0, 0, 0])
+</code></pre>
+<pre><code class="language-python">train_examples = [] 
+for x in range(num_itr):
+  train_examples = sentence_pairs_generation(np.array(x_train), np.array(y_train), train_examples)
+</code></pre>
+<pre><code class="language-python">len(train_examples)
+</code></pre>
+<pre><code>640
+</code></pre>
+<pre><code class="language-python">i_example = train_examples[0]
+</code></pre>
+<pre><code class="language-python">i_example.texts, i_example.label
+</code></pre>
+<pre><code>(['makes a joke out of car chases for an hour and then gives us half an hour of car chases',
+  'it is that rare combination of bad writing , bad direction and bad acting the trifecta of badness'],
+ 1.0)
+</code></pre>
+<pre><code class="language-python">orig_model = SentenceTransformer(st_model)
+model = SentenceTransformer(st_model)
+</code></pre>
+<pre><code>Downloading:   0%|          | 0.00/690 [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/3.70k [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/594 [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/122 [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/229 [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/438M [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/53.0 [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/239 [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/466k [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/1.19k [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/232k [00:00&lt;?, ?B/s]
+
+
+
+Downloading:   0%|          | 0.00/190 [00:00&lt;?, ?B/s]
+</code></pre>
+<pre><code class="language-python"># S-BERT adaptation 
+train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=16)
+train_loss = losses.CosineSimilarityLoss(model)
+model.fit(train_objectives=[(train_dataloader, train_loss)], epochs=1, warmup_steps=10, show_progress_bar=True)
+
+</code></pre>
+<pre><code>Epoch:   0%|          | 0/1 [00:00&lt;?, ?it/s]
+
+
+
+Iteration:   0%|          | 0/40 [00:00&lt;?, ?it/s]
+</code></pre>
+<pre><code class="language-python">len(y_train)
+</code></pre>
+<pre><code>64
+</code></pre>
+<pre><code class="language-python"># No Fit
+X_train_noFT = orig_model.encode(x_train)
+X_eval_noFT = orig_model.encode(x_eval)
+
+sgd =  LogisticRegression()
+sgd.fit(X_train_noFT, y_train)
+y_pred_eval_sgd = sgd.predict(X_eval_noFT)
+
+print('Acc. No Fit', accuracy_score(y_eval, y_pred_eval_sgd))
+</code></pre>
+<pre><code>Acc. No Fit 0.8390993959362988
+</code></pre>
+<pre><code class="language-python"># With Fit (SetFit)
+X_train = model.encode(x_train)
+X_eval = model.encode(x_eval)
+
+sgd =  LogisticRegression()
+sgd.fit(X_train, y_train)
+y_pred_eval_sgd = sgd.predict(X_eval)
+
+print('Acc. SetFit', accuracy_score(y_eval, y_pred_eval_sgd))
+</code></pre>
+<pre><code>Acc. SetFit 0.9082921471718836
+</code></pre>
+<pre><code class="language-python">#Plot 2-D 2x2 figures
+if plot2d_checkbox:   
+
+  plt.figure(figsize=(20,10))
+
+#Plot X_train_noFit
+  X_embedded = TSNE(n_components=2).fit_transform(np.array(X_train_noFT))
+  plt.subplot(221)
+  plt.title('X_train No Fit')
+
+  for i, t in enumerate(set(np.array(y_train))):
+      idx = np.array(y_train) == t
+      plt.scatter(X_embedded[idx, 0], X_embedded[idx, 1], label=t)   
+
+  plt.legend(bbox_to_anchor=(1, 1));
+
+#Plot X_eval noFit
+  X_embedded = TSNE(n_components=2).fit_transform(np.array(X_eval_noFT))
+  plt.subplot(223)
+  plt.title('X_eval No Fit')
+
+  for i, t in enumerate(set(np.array(y_eval))):
+      idx = np.array(y_eval) == t
+      plt.scatter(X_embedded[idx, 0], X_embedded[idx, 1], label=t)   
+
+  plt.legend(bbox_to_anchor=(1, 1));
+
+
+#Plot X_train SetFit
+  X_embedded = TSNE(n_components=2).fit_transform(np.array(X_train))
+
+  plt.subplot(222)
+  plt.title('X_train SetFit')
+
+  for i, t in enumerate(set(np.array(y_train))):
+      idx = np.array(y_train) == t
+      plt.scatter(X_embedded[idx, 0], X_embedded[idx, 1], label=t)   
+
+  plt.legend(bbox_to_anchor=(1, 1));
+
+#Plot X_eval SetFit
+  X_embedded = TSNE(n_components=2).fit_transform(np.array(X_eval))
+  plt.subplot(224)
+  plt.title('X_eval SetFit')
+
+  for i, t in enumerate(set(np.array(y_eval))):
+      idx = np.array(y_eval) == t
+      plt.scatter(X_embedded[idx, 0], X_embedded[idx, 1], label=t)   
+
+  plt.legend(bbox_to_anchor=(1, 1));
+
+</code></pre>
+<p><img alt="png" src="../SetFit_SST_2_Few_shot_files/SetFit_SST_2_Few_shot_22_0.png" /></p>
+<pre><code class="language-python">
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Seq2Seq_Pytorch/" class="btn btn-neutral float-left" title="Seq2Seq Pytorch"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Simpletransformers_2/" class="btn btn-neutral float-right" title="Simpletransformers 2">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Seq2Seq_Pytorch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Simpletransformers_2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
